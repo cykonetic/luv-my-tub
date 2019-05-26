@@ -1,4 +1,4 @@
 /luv-my-tub.code-workspace
 /package.json
 /node_modules
-/.env
+/**/.env
