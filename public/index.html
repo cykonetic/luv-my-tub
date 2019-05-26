@@ -11,30 +11,12 @@
 <body>
     <div id="app">
         <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" id="home-tab" href="#home">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" id="how-to-tab" href="#how-to">How To</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" id="order-tab" href="#order">Order</a>
-            </li>
-            <li class="nav-tiem">
-                <a class="nav-link" data-toggle="tab" id="about-tab" href="#about">About</a>
+            <li class="nav-item" v-for="page in pages">
+                <a class="nav-link" data-toggle="tab" :id="page.tab" :href="page.href">{{ page.name }}</a>
             </li>
         </ul>
-        <div class="tab-content">
-            <div class="tab-pane fade" id="home"><h1>Home</h1></div>
-            <div class="tab-pane fade" id="how-to"><h1>How To</h1></div>
-            <div class="tab-pane fade" id="order">
-                <form >
-                    <div class="form-group">
-                        <input :first_name=first_name />
-                    </div>
-                </form>
-            </div>
-            <div class="tab-pane fade" id="about"><h1>About</h1></div>
+        <div class="tab-content" v-for="page in pages">
+            <div class="tab-pane fade" :id="page.id"><h1>{{ page.content }}</h1></div>
         </div>
     </div>
 
@@ -47,6 +29,36 @@
         app = new Vue({
             el: "#app",
             data: {
+                pages: {
+                    home: {
+                        id: 'home', 
+                        name: 'Home', 
+                        tab: 'home-tab', 
+                        href: '#home', 
+                        content: 'Home'
+                    },
+                    howTo: {
+                        id: 'how-to', 
+                        name: 'How To', 
+                        tab: 'how-to-tab', 
+                        href: '#how-to', 
+                        content: 'How To'
+                    },
+                    order: {
+                        id: 'order', 
+                        name: 'Order', 
+                        tab: 'order-tab', 
+                        href: '#order', 
+                        content: 'Place an Order'
+                    },
+                    about: {
+                        id: 'about', 
+                        name: 'About', 
+                        tab: 'about-tab', 
+                        href: '#about', 
+                        content: 'About'
+                    }
+                },
                 first_name: '',
                 last_name: ''
             },
